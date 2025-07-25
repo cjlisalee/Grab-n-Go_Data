@@ -20,13 +20,13 @@ This repository provides the Grab-n-Go dataset, a collection of C-FMCW-based act
     * [2.5 Objects](#25-objects)
     * [2.6 Data Volume](#26-data-volume)
     * [2.7 Definition of a Session](#27-definition-of-a-session)
-    * [2.8 Hardware, Software, and Protocols](#28-hardware-software-and-protocols)
+    * [2.8 Hardware and Software](#28-hardware-and-software)
+    * [2.9 Protocols](#29-protocols)
 3.  [Data Structure and Usage](#3-data-structure-and-usage)
     * [3.1 File Naming Conventions](#31-file-naming-conventions)
     * [3.2 Purpose of Files and Folders](#32-purpose-of-files-and-folders)
 4. [Performance Notes](#4-performance-notes)
 5. [License and Citation](#5-license-and-citation)
-6. [Contact](#6-contact)
 
 ---
 
