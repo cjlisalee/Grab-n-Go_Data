@@ -1,6 +1,14 @@
 # Grab-n-Go Microgesture Recognition Dataset
-
 This repository provides the Grab-n-Go dataset, a collection of C-FMCW-based active acoustic sensing data for microgesture recognition while users are holding various objects.
+
+**CHI-JUNG LEE**, Cornell University, USA (cl2358@cornell.edu, [ORCID: 0000-0002-1887-4000](https://orcid.org/0000-0002-1887-4000))  
+**JIAXIN LI**, Cornell University, USA (jl2726@cornell.edu, [ORCID: 0009-0000-7635-6749](https://orcid.org/0009-0000-7635-6749))  
+**TIANHONG CATHERINE YU**, Cornell University, USA (ty274@cornell.edu, [ORCID: 0000-0002-3742-0178](https://orcid.org/0000-0002-3742-0178))  
+**RUIDONG ZHANG**, Cornell University, USA (rz379@cornell.edu, [ORCID: 0000-0001-8329-0522](https://orcid.org/0000-0001-8329-0522))  
+**VIPIN GUNDA**, Cornell University, USA (vg245@cornell.edu, [ORCID: 0009-0000-5500-2183](https://orcid.org/0009-0000-5500-2183))  
+**FRANÇOIS GUIMBRETIÈRE**, Cornell University, USA (fvg3@cornell.edu, [ORCID: 0000-0002-5510-6799](https://orcid.org/0000-0002-5510-6799))  
+**CHENG ZHANG**, Cornell University, USA (chengzhang@cornell.edu, [ORCID: 0000-0002-5079-5927](https://orcid.org/0000-0002-5079-5927))  
+
 
 ## Table of Contents
 1.  [Introduction](#1-introduction)
@@ -30,7 +38,7 @@ The Grab-n-Go dataset supports research into always-available, subtle hand micro
 
 ### 2.1 Sensing Modality and Device
 
-Data was collected using a custom-built, lightweight, watch-like wristband device employing **C-FMCW (Frequency-Modulated Continuous Wave) active acoustic sensing**. The device transmits specific frequency sweeps (18-21 kHz and 21.5-24.5 kHz) and records the reflected signals.
+Data was collected using a custom-built, lightweight, watch-like wristband device employing **C-FMCW (Cross-Correlation-Based Frequency-Modulated Continuous Wave) active acoustic sensing**. The device transmits specific frequency sweeps (18-21 kHz and 21.5-24.5 kHz) and records the reflected signals.
 
 ### 2.2 Feature Representation
 
@@ -50,7 +58,7 @@ The dataset comprises data from a total of **18 participants**:
 
 ### 2.4 Microgesture Set
 
-The dataset includes **30 distinct microgestures**, organized into 5 grasping poses based on Schlesinger's grasp taxonomy. These microgestures represent subtle hand movements performed while holding objects.
+The dataset includes **30 distinct microgestures**, with 6 microgestures for 5 grasping poses based on Schlesinger's grasp taxonomy. These microgestures represent subtle hand movements performed while holding objects.
 
 ### 2.5 Objects
 
@@ -68,7 +76,7 @@ Data was collected across a diverse set of **35 distinct objects**:
 #### Participant-Object Assignments (Initial Study)
 The table below details which 2 objects each participant interacted with for each of the 5 grasping poses in the initial study. Each row represents a participant (P1-P7, P11-P13), and columns 1-10 represent the objects assigned across the 5 grasping poses (2 objects per pose).
 
-| Participant | Object 1 | Object 2 | Object 3 | Object 4 | Object 5 | Object 6 | Object 7 | Object 8 | Object 9 | Object 10 |
+| Participant | Cylindrical 1 | Cylindrical 2 | Hook 1 | Hook 2 | Tip 1 | Tip 2 | Palmar 1 | Palmar 2 | Spherical 1 | Spherical 2 | 
 |-------------|----------|----------|----------|----------|----------|----------|----------|----------|----------|-----------|
 | P1          | Pen Holder | Soda Can | Suitcase | Tool Box | Marker | Crochet Hook | Tall Cardboard Box | Basket | Gotcha Ball | Jar Lid |
 | P2          | Soda Can | Paper Cup | Tool Box | Yoga Mat Holder | Crochet Hook | Pen | Basket | Closet Organizer | Jar Lid | Desktop Vacuum |
@@ -81,6 +89,19 @@ The table below details which 2 objects each participant interacted with for eac
 | P12          | Paper Cup | Beer Bottle | Yoga Mat Holder | Double Strap Bag | Pen | Probe | Long Cardboard Box | Closet Organizer | Desktop Vacuum | Timer |
 | P13         | Pen Holder | Lotion Box | Lunch Bag | Suitcase | Marker | Glue Stick | Tall Cardboard Box | Paper Bag | Gotcha Ball | Cleaning Brush |
 
+#### Participant-Object Assignments (Follow-Up Study)
+
+| Participant | Cylindrical | Hook | Tip | Palmar | Spherical |
+|---|---|---|---|---|---|
+| P14 | Laminated Foil Pouch | Phone Strap | DuPont Wire | Throw Pillow | Loofah |
+| P15 | Laminated Foil Pouch | Phone Strap | DuPont Wire | Throw Pillow | Loofah |
+| P16 | Laminated Foil Pouch | Phone Strap | DuPont Wire | Throw Pillow | Loofah |
+| P17 | Laminated Foil Pouch | Phone Strap | DuPont Wire | Throw Pillow | Loofah |
+| P18 | Cracker Bag | Empty Bag | Weaving Needle | Cushion | Sponge |
+| P19 | Cracker Bag | Empty Bag | Weaving Needle | Cushion | Sponge |
+| P20 | Cracker Bag | Empty Bag | Weaving Needle | Cushion | Sponge |
+| P21 | Cracker Bag | Empty Bag | Weaving Needle | Cushion | Sponge |
+
 ### 2.6 Data Volume
 
 The complete dataset contains a total of **20,160 microgesture instances**. Each instance includes the raw original and differential echo profile in .npy format and visualization in .png format.
@@ -89,11 +110,13 @@ The complete dataset contains a total of **20,160 microgesture instances**. Each
 
 A "session" refers to a distinct, continuous block of data collection for a participant. During a session, a participant performs a set of microgestures with assigned objects. Between each session, the participant removed and re-weared the device. In the context of our training and evaluation, data from different sessions were used to assess model generalization over time and wearing changes. For example, in some evaluations, models were trained on the first five sessions and validated on the final session for each participant.
 
-### 2.8 Hardware, Software, and Protocols
+### 2.8 Hardware and Software
+
+![image](figures/prototype.png)
 
 * **Hardware:** Custom-built wristband device with integrated speaker and microphone.
-
-* **Software:** Data acquisition and processing were performed using Python. Machine learning models were implemented using PyTorch.
+  * **Sensors:** Two speaker-microphone pairs (OWR-06944T-16B speakers and ICS-43434 microphones) mounted on customized PCBs.
+  * **Microcontroller:** Sensors are connected to a customized microcontroller module (including an SGW1110 module and an MAX98357A audio amplifier) via FPC ribbons.
 
 * **Instrument Settings:**
 
@@ -105,7 +128,17 @@ A "session" refers to a distinct, continuous block of data collection for a part
 
   * **Filtering:** Band-pass filter applied to received signals before cross-correlation.
 
-* **Protocols:** For each grasping pose in the order of Cylindrical, Hook, Tip, Palmar, and Spherical, each participant collected 6 sessions of data. During each session, the participant first performed 4 repetitions of the 6 microgestures in a randomized order, using one of the assigned objects within the current grasping pose category. Each microgesture was performed in a 2-second window. Then, this process was repeated with the second assigned object. Between each session, the participant removed and re-weared the device under the researcher’s guidance. In total, there were 2 (objects) × 5 (grasping poses) × 6 (sessions) × 6 (microgestures) × 4 (repetitions) = 1440 microgesture instances collected from each participant in the initial study.
+* **Software:** Data acquisition and processing were performed using Python. 
+  * **Signal Processing (Echo Profile Generation):**
+    * **Signal Filtering:** Received signals are filtered to keep only the frequencies of our transmitted signals (18-21 kHz and 21.5-24.5 kHz) ([scipy.signal.butter](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.butter.html))
+    * **Core Method:** Performs **cross-correlation** between the transmitted FMCW signal and the band-pass filtered received signals to extract signal strengths at different return times. ([np.correlate](https://numpy.org/doc/stable/reference/generated/numpy.correlate.html))
+    * **Time-to-Distance Mapping:** Time-domain results are mapped into the distance domain (using the known speed of sound) to generate the **echo frames**. An echo frame is 1-pixel wide (equivalent to 12 ms, the duration of one frequency sweep) and 600-pixels long (equivalent to a 2.06 m sensing range).
+    * **Original Echo Profiles:** Created by stacking the 1-pixel wide echo frames along the time (x-axis), providing continuous reflection strengths at different distances. This captures static hand geometries.
+    * **Differential Echo Profiles:** Calculated by subtracting the previous echo frame from the current echo frame. This amplifies the hand geometry movements.
+
+### 2.9 Protocols
+
+For each grasping pose in the order of Cylindrical, Hook, Tip, Palmar, and Spherical, each participant collected 6 sessions of data. During each session, the participant first performed 4 repetitions of the 6 microgestures in a randomized order, using one of the assigned objects within the current grasping pose category. Each microgesture was performed in a 2-second window. In the initial study, this process was repeated with the second assigned object. Between each session, the participant removed and re-wore the device under the researcher’s guidance. 
 
 ## 3. Data Structure and Usage
 
@@ -154,26 +187,60 @@ The dataset is organized into a clear directory structure.
 ## 4. Performance Notes
 
 The associated research paper demonstrates:
+* **Machine Learning Framework:** Models were implemented using **PyTorch**.
+    * **Model Architecture:** A customized **Encoder-Decoder model architecture**.
+        * **Encoder:** **ResNet-18** as the encoder backbone.
+        * **Decoder:** Includes an adaptive 2D average pooling layer (output size \[1, 1\]), a dropout layer (rate 0.6) to prevent overfitting, and a fully connected layer with an output dimension of 30 for classification.
+        * **Input Tensor:** Size **155 × 70 × 8**, representing:
+            * 1.8 seconds of temporal data (155 pixels along the time axis).
+            * A 24 cm range of interest (70 pixels along the distance axis).
+            * 8 stacked channels (four original echo profiles and their corresponding four differential echo profiles).
+        * **Optimization:** **Cross-entropy (CE) loss** is used as the optimization objective.
+        * **Hyperparameters:** Initial learning rate of **0.0002** and a batch size of **8**.
+    * **Data Augmentation:** Applied during training to address variations in hand sizes and device positioning:
+        * **Vertical Shifting:** Echo profiles were randomly shifted vertically by up to 6 pixels.
+        * **Amplitude Jitter:** In 80% of training iterations, each pixel’s intensity value was multiplied by a random factor between 0.95 and 1.05.
 
-* An average recognition accuracy of 92.0% with non-deformable objects (initial study).
+* **Results:**
+  * An average recognition accuracy of 92.0% with non-deformable objects (initial study).
 
-* An average recognition accuracy of 92.9% with deformable objects, and 95.0% for non-deformable objects when evaluated on the combined dataset.
-
-* Low false-positive rates (0.2-0.3%), indicating high reliability.
-
-* Evidence of overfitting (100% training accuracy vs. 92% testing accuracy) which is discussed in the paper as expected given dataset constraints and task complexity.
+  * An average recognition accuracy of 92.9% with deformable objects, and 95.0% for non-deformable objects when evaluated on the combined dataset.
 
 ## 5. License and Citation
 
-[To be added upon final publication]
+This dataset is shared under a Creative Commons 1.0 Universal Public Domain Dedication (https://creativecommons.org/publicdomain/zero/1.0/). The material can be copied, modified and used without permission, but attribution to the original authors is always appreciated. 
 
-Please cite the associated paper (details to be provided) if you use this dataset in your research:
+```
+@misc{lee2025grabngo,
+  author = {Chi-Jung Lee and Jiaxin Li and Tianhong Yu and Ruidong Zhang and Vipin Gunda and François Guimbretière and Cheng Zhang},
+  title = {Data from: Grab-n-Go: On-the-Go Microgesture Recognition with Objects in Hand},
+  year         = {2025},
+  publisher    = {Cornell University Library eCommons Repository},
+  url = {\url{https://doi.org/10.7298/7kbd-vv75}},
+  doi          = {10.7298/7kbd-vv75},
+  note         = {[dataset]}
+}
 
+```
 
-## 6. Contact
-
-For any questions or further information, please refer to the contact details in the associated publication or reach out to:
-
-Chi-Jung Lee
-cl2358@cornell.edu
-SciFi Lab @ Cornell University
+Please cite the associated paper if you use this dataset in your research:
+```
+@article{10.1145/3699741,
+  author = {Lee, Chi-Jung and Li, Jiaxin and Yu, Tianhong Catherine and Zhang, Ruidong and Gunda, Vipin Guimbreti\`{e}re, Fran\c{c}ois and Zhang, Cheng},
+  title = {Grab-n-Go: On-the-Go Microgesture Recognition with Objects in
+  Hand},
+  year = {2025},
+  issue_date = {September 2025},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  volume = {9},
+  number = {3},
+  url = {https://doi.org/10.1145/3749469},
+  doi = {10.1145/3749469},
+  abstract = {As computing devices become increasingly integrated into daily life, there is a growing need for intuitive, always-available interaction methods --- even when users’ hands are occupied. In this paper, we introduce Grab-n-Go, the first wearable device that leverages active acoustic sensing to recognize subtle hand microgestures while holding various objects. Unlike prior systems that focus solely on free-hand gestures or basic hand-object activity recognition, Grab-n-Go simultaneously captures information about hand microgestures, grasping poses, and object geometries using a single wristband, enabling the recognition of fine-grained hand movements occurring within activities involving occupied hands. A deep learning framework processes these complex signals to identify 30 distinct microgestures, with 6 microgestures for each of the 5 grasping poses. In a user study with 10 participants and 25 everyday objects, Grab-n-Go achieved an average recognition accuracy of 92.0%. A follow-up study further validated Grab-n-Go's robustness against 10 more challenging, deformable objects. These results underscore the potential of Grab-n-Go to provide seamless, unobtrusive interactions without requiring modifications to existing objects. The complete dataset, comprising data from 18 participants performing 30 microgestures with 35 distinct objects, is publicly available at https://github.com/cjlisalee/Grab-n-Go_Data with the DOI: https://doi.org/10.7298/7kbd-vv75.},
+  journal = {Proc. ACM Interact. Mob. Wearable Ubiquitous Technol.},
+  month = sep,
+  articleno = {99},
+  numpages = {27}
+}
+```
