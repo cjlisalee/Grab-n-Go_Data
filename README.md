@@ -1,5 +1,5 @@
 # Grab-n-Go Microgesture Recognition Dataset
-This repository provides the Grab-n-Go dataset, a collection of C-FMCW-based active acoustic sensing data for microgesture recognition while users are holding various objects.
+This repository provides the README of the Grab-n-Go dataset (https://doi.org/10.7298/7kbd-vv75), a collection of C-FMCW-based active acoustic sensing data for microgesture recognition while users are holding various objects.
 
 **CHI-JUNG LEE**, Cornell University, USA (cl2358@cornell.edu, [ORCID: 0000-0002-1887-4000](https://orcid.org/0000-0002-1887-4000))  
 **JIAXIN LI**, Cornell University, USA (jl2726@cornell.edu, [ORCID: 0009-0000-7635-6749](https://orcid.org/0009-0000-7635-6749))  
